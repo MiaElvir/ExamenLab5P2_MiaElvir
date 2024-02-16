@@ -108,10 +108,7 @@ public class LogPrincipal extends javax.swing.JFrame {
 
         tablaTramites1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nombre de Tramite", "Descripcion", "Fecha", "Numero de Identidad"
@@ -163,7 +160,6 @@ public class LogPrincipal extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel4.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 19, 202, -1));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -397,8 +393,9 @@ public class LogPrincipal extends javax.swing.JFrame {
             
             if (user instanceof Empleado){
                 this.setVisible(false);
+                panelEmpleado.pack();
+                //bread
                 panelEmpleado.setVisible(true);
-                panelEmpleado.setResizable(true);
                 NomUser.setText(((Empleado) user).getNombre()+" "+((Empleado) user).getApellido());
                 
             
@@ -498,6 +495,22 @@ public class LogPrincipal extends javax.swing.JFrame {
                 usuarios.get(i).getFechaN()}; 
             model1.addRow(modelo);
         }
+    
+    }
+    public void llenarTramite(){
+        DefaultTableModel model1 = (DefaultTableModel)tablaTramites1.getModel(); 
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i) instanceof Civil){
+                Civil p = (Civil)usuarios.get(i); 
+                for (int j = 0; j < p.getTramites().size(); j++) {
+                    Object [] modelo = {p.getTramites().get(i).getNombre(), p.getTramites().get(i).getDescripcion(),
+                        p.getTramites().get(i).getFecha(), p.getTramites().get(i).getDni()}; 
+                    model1.addRow(modelo);
+                }
+                
+            }
+        }
+        tablaTramites1.setModel(model1);
     
     }
 
