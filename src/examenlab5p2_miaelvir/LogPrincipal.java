@@ -2,20 +2,25 @@
 package examenlab5p2_miaelvir;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 
 public class LogPrincipal extends javax.swing.JFrame {
 
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
-    Usuario user1 = new Empleado("Gastro", "chef", "22", "Mario", "Vallejo",
-            "papas", "Masculino", "Francscio Morazan", new Date("02/03/2006")); 
-    Usuario user2 = new Civil("Mauri", "Pardo", "salsa", "femenino", "Cortes", new Date("12/01/1996")); 
-    Usuario user3 = new Empleado("Ingeniero", "programador", "19", "Emilio", "Cantarero", 
-            "pato", "Masculino", "Comayagua", new Date("15/06/2004")); 
+    static ArrayList<Usuario> usuarios = new ArrayList<>(); 
+    
     
     public LogPrincipal() {
         initComponents();
+        usuarios.add(new Empleado("Gastro", "chef", "22", "Mario", "Vallejo",
+            "papas", "Masculino", "Francscio Morazan", new Date("02/03/2006"))); 
+        usuarios.add(new Civil("Mauri", "Pardo", "salsa", "femenino", "Cortes", new Date("12/01/1996"))); 
+        usuarios.add(new Empleado("Ingeniero", "programador", "19", "Emilio", "Cantarero", 
+            "pato", "Masculino", "Comayagua", new Date("15/06/2004"))); 
+            
     }
 
     
@@ -23,6 +28,15 @@ public class LogPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelEmpleado = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        cerrarSesion = new javax.swing.JButton();
+        NomUser = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -30,6 +44,102 @@ public class LogPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         entradaNombre = new javax.swing.JTextField();
         BotonIngresar = new javax.swing.JButton();
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 547, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 339, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Empleados", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 547, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 339, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Civiles", jPanel4);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Bienvenido : ");
+
+        cerrarSesion.setText("Cerrar Sesion");
+        cerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarSesionMouseClicked(evt);
+            }
+        });
+
+        NomUser.setText("jLabel5");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(NomUser, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(cerrarSesion))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NomUser, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelEmpleadoLayout = new javax.swing.GroupLayout(panelEmpleado.getContentPane());
+        panelEmpleado.getContentPane().setLayout(panelEmpleadoLayout);
+        panelEmpleadoLayout.setHorizontalGroup(
+            panelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelEmpleadoLayout.setVerticalGroup(
+            panelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,10 +223,36 @@ public class LogPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonIngresarMouseClicked
-        
+        String nombre = entradaNombre.getText(); 
+        String contra = Entradacontra.getText(); 
+        Object user = ""; 
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getContraseña().equalsIgnoreCase(contra)){
+                user = usuarios.get(i); 
+            }
+        }
+        if (Ingreso(nombre, contra) == true){
+            if (user instanceof Empleado){
+                this.setVisible(false);
+                panelEmpleado.setVisible(true);
+                panelEmpleado.setResizable(true);
+                NomUser.setText(((Empleado) user).getNombre()+" "+((Empleado) user).getApellido());
+                
+            
+            }else if (user instanceof Civil){
+                
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado"); 
+        }
         
         
     }//GEN-LAST:event_BotonIngresarMouseClicked
+
+    private void cerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionMouseClicked
+        panelEmpleado.setVisible(true);
+        
+    }//GEN-LAST:event_cerrarSesionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -152,14 +288,39 @@ public class LogPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static String n_completo(String n, String a){
+        String completo = n+" "+a; 
+        return completo; 
+    }
+    
+    public static boolean Ingreso(String n, String c){
+        
+        for (int i = 0; i < usuarios.size(); i++) {
+            String nombre = n_completo(usuarios.get(i).getNombre(), usuarios.get(i).getApellido()); 
+            if (n.equalsIgnoreCase(nombre) && c.equalsIgnoreCase(usuarios.get(i).getContraseña())){
+                return true; 
+            }
+        }
+        return false; 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JTextField Entradacontra;
+    private javax.swing.JLabel NomUser;
+    private javax.swing.JButton cerrarSesion;
     private javax.swing.JTextField entradaNombre;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JFrame panelEmpleado;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,7 +16,6 @@ public class Empleado extends Usuario{
         this.carrera = carrera;
         this.puesto = puesto;
         this.anios = anios;
-        
     }
 
     public String getCarrera() {
