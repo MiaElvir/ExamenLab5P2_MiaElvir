@@ -4,6 +4,7 @@ package examenlab5p2_miaelvir;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,8 +23,7 @@ public class LogPrincipal extends javax.swing.JFrame {
         usuarios.add(new Civil("Mauri", "Pardo", "salsa", "femenino", "Cortes", new Date("12/01/1996"))); 
         usuarios.add(new Empleado("Ingeniero", "programador", "19", "Emilio", "Cantarero", 
             "pato", "Masculino", "Comayagua", new Date("15/06/2004"))); 
-            
-        
+        llenarTabla();
     }
 
     
@@ -36,17 +36,34 @@ public class LogPrincipal extends javax.swing.JFrame {
         tabCiviles = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TablaInfoCiviles = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaTramites1 = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaTramites = new javax.swing.JTable();
+        comboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
+        modContra = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TablaInfoCiviles1 = new javax.swing.JTable();
+        modApellido = new javax.swing.JTextField();
+        modNombre = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        modSexo = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        modDepa = new javax.swing.JComboBox<>();
+        modFecha = new com.toedter.calendar.JDateChooser();
+        modBoton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cerrarSesion = new javax.swing.JButton();
         NomUser = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,6 +76,11 @@ public class LogPrincipal extends javax.swing.JFrame {
 
         tabCiviles.setBackground(new java.awt.Color(255, 255, 255));
         tabCiviles.setForeground(new java.awt.Color(0, 0, 0));
+        tabCiviles.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabCivilesStateChanged(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -66,28 +88,25 @@ public class LogPrincipal extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Informacion de los civiles: ");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(484, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel5)
-                .addContainerGap(288, Short.MAX_VALUE))
-        );
+        TablaInfoCiviles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        tabCiviles.addTab("Informacion Civiles", jPanel3);
+            },
+            new String [] {
+                "Nombre Completo", "No. de identidad", "Fecha de Nacimiento"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(TablaInfoCiviles);
 
-        tablaTramites.setModel(new javax.swing.table.DefaultTableModel(
+        tablaTramites1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,76 +125,111 @@ public class LogPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaTramites);
+        jScrollPane4.setViewportView(tablaTramites1);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Tramites: ");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+        );
+
+        tabCiviles.addTab("Informacion Civiles", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 19, 202, -1));
+
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Tramites: ");
+        jLabel6.setText("Fecha de Nacimiento:");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 140, 25));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        modContra.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(modContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 241, -1));
+
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Informacion de los civiles: ");
+        jLabel7.setText("Contraseña: ");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 88, 25));
 
-        TablaInfoCiviles1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre Completo", "No. de identidad", "Fecha de nacimiento"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+        modApellido.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(modApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 241, -1));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        modNombre.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(modNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 241, -1));
+
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Nombre: ");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 73, 88, 25));
+
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Apellido: ");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 88, 25));
+
+        modSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", " " }));
+        jPanel4.add(modSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 180, -1));
+
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Contraseña: ");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 88, 25));
+
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Contraseña: ");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 88, 25));
+
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Contraseña: ");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 88, 25));
+
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Sexo: ");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 20));
+
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Departamento: ");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
+        modDepa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Francisco Morazan", "Cortes ", "Comayagua", " " }));
+        jPanel4.add(modDepa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 180, -1));
+        jPanel4.add(modFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
+
+        modBoton.setText("Modificar");
+        modBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modBotonMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(TablaInfoCiviles1);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(142, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(378, Short.MAX_VALUE)))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(146, Short.MAX_VALUE)))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(jLabel7)
-                    .addContainerGap(289, Short.MAX_VALUE)))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(56, 56, 56)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(192, Short.MAX_VALUE)))
-        );
+        modBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modBotonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(modBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 180, 60));
 
         tabCiviles.addTab("Modificar Civiles", jPanel4);
 
@@ -239,6 +293,9 @@ public class LogPrincipal extends javax.swing.JFrame {
         );
 
         jButton1.setText("jButton1");
+
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Nombre: ");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -330,7 +387,14 @@ public class LogPrincipal extends javax.swing.JFrame {
                 user = usuarios.get(i); 
             }
         }
+        DefaultComboBoxModel ids = (DefaultComboBoxModel)comboBox.getModel();
+        ids.addElement(usuarios.get(1).getId());
+        
+        
         if (Ingreso(nombre, contra) == true){
+            entradaNombre.setText("");
+            Entradacontra.setText("");
+            
             if (user instanceof Empleado){
                 this.setVisible(false);
                 panelEmpleado.setVisible(true);
@@ -339,6 +403,7 @@ public class LogPrincipal extends javax.swing.JFrame {
                 
             
             }else if (user instanceof Civil){
+                //mostrar pestañas de civiles
                 
             }
         }else{
@@ -349,9 +414,31 @@ public class LogPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonIngresarMouseClicked
 
     private void cerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionMouseClicked
-        panelEmpleado.setVisible(true);
+        panelEmpleado.setVisible(false);
+        this.setVisible(true);
         
     }//GEN-LAST:event_cerrarSesionMouseClicked
+
+    private void tabCivilesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabCivilesStateChanged
+        
+    }//GEN-LAST:event_tabCivilesStateChanged
+
+    private void modBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modBotonActionPerformed
+
+    private void modBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modBotonMouseClicked
+        Civil us = (Civil)usuarios.get(1); 
+        us.setNombre(modNombre.getText());
+        us.setApellido(modApellido.getText());
+        us.setContraseña(modContra.getText());
+        us.setDepartamento((String)modDepa.getSelectedItem());
+        us.setSexo((String)modSexo.getSelectedItem());
+        us.setFechaN(modFecha.getDate());  
+        modNombre.setText("");
+        modApellido.setText("");
+        modContra.setText("");
+    }//GEN-LAST:event_modBotonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -403,30 +490,57 @@ public class LogPrincipal extends javax.swing.JFrame {
         }
         return false; 
     }
+    
+    public void llenarTabla(){
+        DefaultTableModel model1 = (DefaultTableModel)TablaInfoCiviles.getModel(); 
+        for (int i = 0; i < usuarios.size(); i++) {
+            Object [] modelo = {usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(), usuarios.get(i).getId(),
+                usuarios.get(i).getFechaN()}; 
+            model1.addRow(modelo);
+        }
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JTextField Entradacontra;
     private javax.swing.JLabel NomUser;
-    private javax.swing.JTable TablaInfoCiviles1;
+    private javax.swing.JTable TablaInfoCiviles;
     private javax.swing.JButton cerrarSesion;
+    private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JTextField entradaNombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField modApellido;
+    private javax.swing.JButton modBoton;
+    private javax.swing.JTextField modContra;
+    private javax.swing.JComboBox<String> modDepa;
+    private com.toedter.calendar.JDateChooser modFecha;
+    private javax.swing.JTextField modNombre;
+    private javax.swing.JComboBox<String> modSexo;
     private javax.swing.JFrame panelEmpleado;
     private javax.swing.JTabbedPane tabCiviles;
-    private javax.swing.JTable tablaTramites;
+    private javax.swing.JTable tablaTramites1;
     // End of variables declaration//GEN-END:variables
 }
