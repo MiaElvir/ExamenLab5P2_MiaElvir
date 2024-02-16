@@ -64,8 +64,8 @@ public abstract class Usuario {
         String idi = ""; 
         if (departamento.equalsIgnoreCase("Francisco Morazan")){
             int iden = ran.nextInt(01, 29); 
-            int f = fecha.getYear(); 
-            idi+=(01+iden+"-"+f+"-"); 
+            int f = fecha.getYear()+1900; 
+            idi+=("01"+iden+"-"+f+"-"); 
             for (int i = 0; i < 5; i++) {
                 int rani = ran.nextInt(0,9); 
                 idi+=rani; 
@@ -73,16 +73,16 @@ public abstract class Usuario {
             
         }else if (departamento.equalsIgnoreCase("Cortes")){
             int iden = ran.nextInt(01, 12); 
-            int f = fecha.getYear();
-            idi+=(02+iden+"-"+f+"-"); 
+            int f = fecha.getYear()+1900;
+            idi+=("02"+iden+"-"+f+"-"); 
             for (int i = 0; i < 5; i++) {
                 int rani = ran.nextInt(0,9); 
                 idi+=rani; 
             }
         }else if (departamento.equalsIgnoreCase("Comayagua")){
             int iden = ran.nextInt(01, 21); 
-            int f = fecha.getYear();
-            idi+=(03+iden+"-"+f+"-"); 
+            int f = fecha.getYear()+1900;
+            idi+=("03"+iden+"-"+f+"-"); 
             for (int i = 0; i < 5; i++) {
                 int rani = ran.nextInt(0,9); 
                 idi+=rani; 
