@@ -26,6 +26,39 @@ public abstract class Usuario {
         //metodo identidad
         this.Id = Id(departamento, fechaN); 
     }
+
+    public static Random getRan() {
+        return ran;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public Date getFechaN() {
+        return fechaN;
+    }
+    
     
     public String Id(String departamento, Date fecha){
         String idi = ""; 

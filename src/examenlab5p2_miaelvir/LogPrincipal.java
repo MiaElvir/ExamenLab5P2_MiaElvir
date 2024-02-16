@@ -1,11 +1,19 @@
 
 package examenlab5p2_miaelvir;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class LogPrincipal extends javax.swing.JFrame {
 
-    static Usuario user1 = new Empleado("Cocinero", "chef", "22", "Mario", "Vallejos", 
-            "papas", "Masculino", "Francisco Morazan", "", fechaN); 
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+    Usuario user1 = new Empleado("Gastro", "chef", "22", "Mario", "Vallejo",
+            "papas", "Masculino", "Francscio Morazan", new Date("02/03/2006")); 
+    Usuario user2 = new Civil("Mauri", "Pardo", "salsa", "femenino", "Cortes", new Date("12/01/1996")); 
+    Usuario user3 = new Empleado("Ingeniero", "programador", "19", "Emilio", "Cantarero", 
+            "pato", "Masculino", "Comayagua", new Date("15/06/2004")); 
+    
     public LogPrincipal() {
         initComponents();
     }
@@ -18,9 +26,9 @@ public class LogPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Entradacontra = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        entradaNombre = new javax.swing.JTextField();
         BotonIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -35,13 +43,13 @@ public class LogPrincipal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ingrese su Contraseña: ");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        Entradacontra.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Ingrese su Nombre Completo: ");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        entradaNombre.setBackground(new java.awt.Color(255, 255, 255));
 
         BotonIngresar.setBackground(new java.awt.Color(102, 102, 255));
         BotonIngresar.setForeground(new java.awt.Color(0, 0, 0));
@@ -65,8 +73,8 @@ public class LogPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
+                            .addComponent(Entradacontra, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                            .addComponent(entradaNombre)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(200, 200, 200)
                         .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -80,11 +88,11 @@ public class LogPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(12, 12, 12)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(entradaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Entradacontra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -147,11 +155,11 @@ public class LogPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonIngresar;
+    private javax.swing.JTextField Entradacontra;
+    private javax.swing.JTextField entradaNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

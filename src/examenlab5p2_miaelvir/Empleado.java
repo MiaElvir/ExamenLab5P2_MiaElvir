@@ -11,11 +11,12 @@ public class Empleado extends Usuario{
     
     protected String carrera, puesto, anios; 
 
-    public Empleado(String carrera, String puesto, String anios, String nombre, String apellido, String contraseña, String sexo, String departamento, String Id, Date fechaN) {
+    public Empleado(String carrera, String puesto, String anios, String nombre, String apellido, String contraseña, String sexo, String departamento, Date fechaN) {
         super(nombre, apellido, contraseña, sexo, departamento, fechaN);
         this.carrera = carrera;
         this.puesto = puesto;
         this.anios = anios;
+        
     }
 
     public String getCarrera() {

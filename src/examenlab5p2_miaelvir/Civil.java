@@ -15,8 +15,9 @@ public class Civil extends Usuario{
     
     public ArrayList<Tramite> tramites = new ArrayList(); 
 
-    public Civil(String nombre, String apellido, String contraseña, String sexo, String departamento, String Id, Date fechaN) {
+    public Civil(String nombre, String apellido, String contraseña, String sexo, String departamento, Date fechaN) {
         super(nombre, apellido, contraseña, sexo, departamento, fechaN);
+        
     }
     
     
