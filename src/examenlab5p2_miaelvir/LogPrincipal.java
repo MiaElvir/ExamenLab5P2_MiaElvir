@@ -691,6 +691,7 @@ public class LogPrincipal extends javax.swing.JFrame {
         modNombre.setText("");
         modApellido.setText("");
         modContra.setText("");
+        llenarTabla();
     }//GEN-LAST:event_modBotonMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
