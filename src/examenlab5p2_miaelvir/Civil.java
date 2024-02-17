@@ -92,6 +92,11 @@ public class Civil extends Usuario{
     public void setFechaN(Date fechaN) {
         this.fechaN = fechaN;
     }
+
+    @Override
+    public String toString() {
+        return "Civil{" + "tramites=" + tramites + '}';
+    }
     
     
             
