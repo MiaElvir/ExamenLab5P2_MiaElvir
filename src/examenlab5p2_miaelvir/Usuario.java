@@ -63,7 +63,7 @@ public abstract class Usuario {
     public String Id(String departamento, Date fecha){
         String idi = ""; 
         if (departamento.equalsIgnoreCase("Francisco Morazan")){
-            int iden = ran.nextInt(01, 29); 
+            int iden = ran.nextInt(01, 29);
             int f = fecha.getYear()+1900; 
             idi+=("01"+iden+"-"+f+"-"); 
             for (int i = 0; i < 5; i++) {
