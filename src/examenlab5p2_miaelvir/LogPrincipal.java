@@ -709,6 +709,7 @@ public class LogPrincipal extends javax.swing.JFrame {
         descripciontramite.setText("");
         llenarTramite1();
         
+        
     }//GEN-LAST:event_botonEnviarTraMouseClicked
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
@@ -778,7 +779,7 @@ public class LogPrincipal extends javax.swing.JFrame {
         model1.setRowCount(0);
         for (int i = 0; i < usuarios.size(); i++) {
             Object [] modelo = {usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(), usuarios.get(i).getId(),
-                usuarios.get(i).getFechaN()}; 
+                df.format(usuarios.get(i).getFechaN())}; 
             model1.addRow(modelo);
         }
     
@@ -788,7 +789,7 @@ public class LogPrincipal extends javax.swing.JFrame {
         DefaultTableModel model1 = (DefaultTableModel)TablaCivilPersonal.getModel(); 
          model1.setRowCount(0);
         Object [] modelo = {usuarios.get(1).getNombre()+usuarios.get(1).getApellido(), usuarios.get(1).getId(),
-            usuarios.get(1).getFechaN()}; 
+            df.format(usuarios.get(1).getFechaN())}; 
         model1.addRow(modelo);
     }
     
@@ -798,7 +799,7 @@ public class LogPrincipal extends javax.swing.JFrame {
         Civil p = (Civil)usuarios.get(1);  
         for (int i = 0; i < p.getTramites().size(); i++) {
             Object [] modelo = {p.getTramites().get(i).getNombre(), p.getTramites().get(i).getDescripcion(),
-                        p.getTramites().get(i).getFecha(), p.getTramites().get(i).getDni()}; 
+                        df.format(p.getTramites().get(i).getFecha()), p.getTramites().get(i).getDni()}; 
             model1.addRow(modelo);
         }
         
@@ -812,7 +813,7 @@ public class LogPrincipal extends javax.swing.JFrame {
                 Civil p = (Civil)usuarios.get(i); 
                 for (int j = 0; j < p.getTramites().size(); j++) {
                     Object [] modelo = {p.getTramites().get(i).getNombre(), p.getTramites().get(i).getDescripcion(),
-                        p.getTramites().get(i).getFecha(), p.getTramites().get(i).getDni()}; 
+                       df.format( p.getTramites().get(i).getFecha()), p.getTramites().get(i).getDni()}; 
                     model1.addRow(modelo);
                 }
                 
