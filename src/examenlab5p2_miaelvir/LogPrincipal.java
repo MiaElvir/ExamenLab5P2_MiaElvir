@@ -329,6 +329,12 @@ public class LogPrincipal extends javax.swing.JFrame {
         nomCivi.setForeground(new java.awt.Color(0, 0, 0));
         nomCivi.setText("jLabel18");
 
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
         jPanel6.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -701,12 +707,19 @@ public class LogPrincipal extends javax.swing.JFrame {
         usi.getTramites().add(new Tramite(nombreTramite.getText() ,descripciontramite.getText(), usi.getId(), new Date())); 
         nombreTramite.setText("");
         descripciontramite.setText("");
+        llenarTramite1();
         
     }//GEN-LAST:event_botonEnviarTraMouseClicked
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cerrarSesionActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        
+       
+        
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
     /**
      * @param args the command line arguments
@@ -760,7 +773,9 @@ public class LogPrincipal extends javax.swing.JFrame {
     }
     
     public void llenarTabla(){
+        
         DefaultTableModel model1 = (DefaultTableModel)TablaInfoCiviles.getModel(); 
+        model1.setRowCount(0);
         for (int i = 0; i < usuarios.size(); i++) {
             Object [] modelo = {usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(), usuarios.get(i).getId(),
                 usuarios.get(i).getFechaN()}; 
@@ -771,6 +786,7 @@ public class LogPrincipal extends javax.swing.JFrame {
     
     public void llenarinfo(){
         DefaultTableModel model1 = (DefaultTableModel)TablaCivilPersonal.getModel(); 
+         model1.setRowCount(0);
         Object [] modelo = {usuarios.get(1).getNombre()+usuarios.get(1).getApellido(), usuarios.get(1).getId(),
             usuarios.get(1).getFechaN()}; 
         model1.addRow(modelo);
@@ -778,6 +794,7 @@ public class LogPrincipal extends javax.swing.JFrame {
     
     public void llenarTramite1(){
         DefaultTableModel model1 = (DefaultTableModel)TablaTrami.getModel(); 
+         model1.setRowCount(0);
         Civil p = (Civil)usuarios.get(1);  
         for (int i = 0; i < p.getTramites().size(); i++) {
             Object [] modelo = {p.getTramites().get(i).getNombre(), p.getTramites().get(i).getDescripcion(),
@@ -789,6 +806,7 @@ public class LogPrincipal extends javax.swing.JFrame {
     
     public void llenarTramite(){
         DefaultTableModel model1 = (DefaultTableModel)tablaTramites1.getModel(); 
+         model1.setRowCount(0);
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i) instanceof Civil){
                 Civil p = (Civil)usuarios.get(i); 
